@@ -1,0 +1,8 @@
+node_modules
+.DS_Store
+src/.DS_Store
+terraform/.terraform
+terraform/*.tfstate*
+terraform/*.tfvars*
+.idea
+*.zip
