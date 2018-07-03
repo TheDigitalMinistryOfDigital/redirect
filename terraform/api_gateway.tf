@@ -42,54 +42,6 @@ resource "aws_api_gateway_method" "proxy" {
   authorization = "NONE"
 }
 
-// From https://github.com/hashicorp/terraform/issues/10157#issuecomment-263560025
-//resource "aws_api_gateway_method_response" "method_response_proxy" {
-//  rest_api_id = "${aws_api_gateway_rest_api.redirector_api.id}"
-//  resource_id = "${aws_api_gateway_resource.proxy.id}"
-//  http_method = "${aws_api_gateway_method.proxy.http_method}"
-//  status_code = "302"
-//
-//  response_models = {
-//    "application/json" = "Empty"
-//  }
-//}
-
-// From https://github.com/hashicorp/terraform/issues/10157#issuecomment-263560025
-//resource "aws_api_gateway_method_response" "method_response_proxy_root" {
-//  rest_api_id = "${aws_api_gateway_rest_api.redirector_api.id}"
-//  resource_id = "${aws_api_gateway_rest_api.redirector_api.root_resource_id}"
-//  http_method = "${aws_api_gateway_method.proxy_root.http_method}"
-//  status_code = "302"
-//
-//  response_models = {
-//    "application/json" = "Empty"
-//  }
-//}
-
-// From https://github.com/hashicorp/terraform/issues/10157#issuecomment-263560025
-//resource "aws_api_gateway_integration_response" "integration_response_proxy" {
-//  rest_api_id = "${aws_api_gateway_rest_api.redirector_api.id}"
-//  resource_id = "${aws_api_gateway_resource.proxy.id}"
-//  http_method = "${aws_api_gateway_method.proxy.http_method}"
-//  status_code = "302"
-//
-//  response_templates = {
-//    "application/json" = ""
-//  }
-//}
-
-// From https://github.com/hashicorp/terraform/issues/10157#issuecomment-263560025
-//resource "aws_api_gateway_integration_response" "integration_response_proxy_root" {
-//  rest_api_id = "${aws_api_gateway_rest_api.redirector_api.id}"
-//  resource_id = "${aws_api_gateway_rest_api.redirector_api.root_resource_id}"
-//  http_method = "${aws_api_gateway_method.proxy_root.http_method}"
-//  status_code = "302"
-//
-//  response_templates = {
-//    "application/json" = ""
-//  }
-//}
-
 resource "aws_api_gateway_deployment" "redirector_deployment" {
   depends_on = [
     "aws_api_gateway_integration.lambda_root",
